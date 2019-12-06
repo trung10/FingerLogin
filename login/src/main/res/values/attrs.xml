@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="key_button" format="reference|integer"/>
+    <attr name="lock_screen" format="reference|integer"/>
+    <attr name="fingerprint_button" format="reference|integer"/>
+    <attr name="delete_button" format="reference|integer"/>
+    <attr name="code_view" format="reference|integer"/>
+    <attr name="title" format="reference|integer"/>
+    <attr name="hint" format="reference|integer"/>
+    <attr name="next" format="reference|integer"/>
+</resources>

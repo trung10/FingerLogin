@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.MainFragment">
+
+    <ImageView
+        style="?lock_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:theme="@style/LockScreenStyle" />
+
+    <TextView
+        style="?title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center"
+        android:text="Home Screen"
+        android:theme="@style/LockScreenTitleTextStyle" />
+
+</RelativeLayout>

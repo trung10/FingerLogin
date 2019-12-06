@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">login</string>
+    <string name="title_activity_sercurity">SercurityActivity</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="use_pin">Use pin</string>
+    <string name="sign_in">Sign in</string>
+    <string name="ok">OK</string>
+    <string name="not_set_pass">Don\'t set pass code now</string>
+    <string name="forgot">Forgot?</string>
+    <string name="lock_screen_title">Input pin code or use fingerprint</string>
+    <string name="settings">Settings</string>
+    <string name="no_fingerprints_message">No fingerprints found. Please add fingerprints in the settings if you want to use this authorization method."</string>
+    <string name="no_fingerprints_title">"No fingerprints found"</string>
+
+    <string name="fingerprint_not_recognized">Fingerprint not recognized. Try again</string>
+    <string name="fingerprint_success">Fingerprint recognized</string>
+    <string name="fingerprint_description">Confirm fingerprint to continue</string>
+    <string name="fingerprint_hint">Touch sensor</string>
+    <string name="description_fingerprint_icon">Fingerprint icon</string>
+
+    <string name="set_pass_code">Set pass code</string>
+    <string name="confirm_pass_code">Confirm pass code</string>
+    <string name="input_your_pass_code">Input your pass code</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

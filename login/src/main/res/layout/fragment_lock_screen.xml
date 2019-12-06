@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_pf"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        style="?lock_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:theme="@style/LockScreenStyle" />
+
+    <LinearLayout
+        android:id="@+id/ln"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:paddingBottom="60dp">
+
+        <TextView
+            android:id="@+id/title_text_view"
+            style="?title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:text="@string/lock_screen_title"
+            android:theme="@style/LockScreenTitleTextStyle" />
+
+        <com.example.login.views.CodeView
+            android:id="@+id/code_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="360dp"
+            android:layout_marginTop="30dp"
+            android:columnCount="3"
+            android:columnOrderPreserved="false"
+            android:orientation="horizontal"
+            android:rowCount="4">
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowSpan="1"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1">
+
+                <TextView
+                    android:id="@+id/button_1"
+                    style="?key_button"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="1"
+                    android:theme="@style/LockScreenButtonStyle" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowSpan="1"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1">
+
+                <TextView
+                    android:id="@+id/button_2"
+                    style="?key_button"
+                    android:layout_width="@dimen/button_lock_screen_size"
+                    android:layout_height="@dimen/button_lock_screen_size"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="2"
+                    android:theme="@style/LockScreenButtonStyle" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowSpan="1"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1">
+
+                <TextView
+                    android:id="@+id/button_3"
+                    style="?key_button"
+                    android:layout_width="@dimen/button_lock_screen_size"
+                    android:layout_height="@dimen/button_lock_screen_size"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="3"
+                    android:theme="@style/LockScreenButtonStyle" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowSpan="1"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1">
+
+                <TextView
+                    android:id="@+id/button_4"
+                    style="?key_button"
+                    android:layout_width="@dimen/button_lock_screen_size"
+                    android:layout_height="@dimen/button_lock_screen_size"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="4"
+                    android:theme="@style/LockScreenButtonStyle" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowSpan="1"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1">
+
+                <TextView
+                    android:id="@+id/button_5"
+                    style="?key_button"
+                    android:layout_width="@dimen/button_lock_screen_size"
+                    android:layout_height="@dimen/button_lock_screen_size"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="5"
+                    android:theme="@style/LockScreenButtonStyle" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowSpan="1"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1">
+
+                <TextView
+                    android:id="@+id/button_6"
+                    style="?key_button"
+                    android:layout_width="@dimen/button_lock_screen_size"
+                    android:layout_height="@dimen/button_lock_screen_size"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="6"
+                    android:theme="@style/LockScreenButtonStyle" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowSpan="1"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1">
+
+                <TextView
+                    android:id="@+id/button_7"
+                    style="?key_button"
+                    android:layout_width="@dimen/button_lock_screen_size"
+                    android:layout_height="@dimen/button_lock_screen_size"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="7"
+                    android:theme="@style/LockScreenButtonStyle" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowSpan="1"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1">
+
+                <TextView
+                    android:id="@+id/button_8"
+                    style="?key_button"
+                    android:layout_width="@dimen/button_lock_screen_size"
+                    android:layout_height="@dimen/button_lock_screen_size"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="8"
+                    android:theme="@style/LockScreenButtonStyle" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowSpan="1"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1">
+
+                <TextView
+                    android:id="@+id/button_9"
+                    style="?key_button"
+                    android:layout_width="@dimen/button_lock_screen_size"
+                    android:layout_height="@dimen/button_lock_screen_size"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="9"
+                    android:theme="@style/LockScreenButtonStyle" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowSpan="1"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1">
+
+                <!--<TextView
+                    android:id="@+id/button_left"
+                    style="?hint"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/side_button_background"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:text="@string/forgot"
+                    android:theme="@style/LockScreenHintTextStyle" />-->
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowSpan="1"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1">
+
+                <TextView
+                    android:id="@+id/button_0"
+                    style="?key_button"
+                    android:layout_width="@dimen/button_lock_screen_size"
+                    android:layout_height="@dimen/button_lock_screen_size"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="0"
+                    android:theme="@style/LockScreenButtonStyle" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_rowSpan="1"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1">
+
+                <TextView
+                    android:id="@+id/button_right"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text=""
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/button_delete"
+                    style="?delete_button"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/side_button_background"
+                    android:gravity="center"
+                    android:text="fp"
+                    android:theme="@style/LockScreenDeleteButtonStyle"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/button_finger_print"
+                    style="?fingerprint_button"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/side_button_background"
+                    android:gravity="center"
+                    android:text="fp"
+                    android:theme="@style/LockScreenFingerPrintButtonStyle" />
+
+            </FrameLayout>
+        </GridLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ln"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/button_not_set_pass"
+            style="?next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/not_set_pass"
+            android:theme="@style/LockScreenNextTextStyle"
+            android:visibility="visible" />
+
+    </LinearLayout>
+</RelativeLayout>

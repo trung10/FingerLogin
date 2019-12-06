@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+    <fragment
+        android:id="@+id/lockScreenFragment"
+        android:name="com.example.login.fragment.LockScreenFragment"
+        android:label="LockScreenFragment" >
+        <action
+            android:id="@+id/action_lockScreenFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.login.ui.login.SplashFragment"
+        android:label="splash_fragment"
+        tools:layout="@layout/splash_fragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_lockScreenFragment"
+            app:destination="@id/lockScreenFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_fingerDialog"
+            app:destination="@id/fingerDialog" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.login.ui.main.MainFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/main_fragment" />
+    <fragment
+        android:id="@+id/fingerDialog"
+        android:name="com.example.login.dialog.FingerDialog"
+        android:label="FingerDialog" >
+        <action
+            android:id="@+id/action_fingerDialog_to_lockScreenFragment"
+            app:destination="@id/lockScreenFragment" />
+    </fragment>
+</navigation>
