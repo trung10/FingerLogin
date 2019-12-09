@@ -37,7 +37,11 @@ class FingerDialog : AppCompatDialogFragment() {
         super.onActivityCreated(savedInstanceState)
 
         if (showsDialog) {
-            (requireDialog() as AlertDialog).setView(root)
+            (requireDialog() as AlertDialog).apply {
+                setView(root)
+                setCancelable(false)
+                setCanceledOnTouchOutside(false)
+            }
         }
 
     }

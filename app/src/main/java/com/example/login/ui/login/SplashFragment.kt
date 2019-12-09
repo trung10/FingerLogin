@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 
 import com.example.login.R
@@ -30,11 +31,18 @@ class SplashFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(SplashViewModel::class.java)
-        // TODO: Use the ViewModel
 
-        Handler().postDelayed({
-            fragmentManager?.let { FingerDialog().show(it, "") }
-        },1000)
+        viewModel.isFirstRunApp.observe(this, Observer { isFirstRun ->
+            if (isFirstRun) {
+                findNavController().navigate(R.id.action_splashFragment_to_lockScreenFragment)
+            }
+        })
+
+        viewModel.isShowDialogFinger.observe(this, Observer { isShow ->
+            if (isShow) {
+                fragmentManager?.let { FingerDialog().show(it, "") }
+            }
+        })
     }
 
 }

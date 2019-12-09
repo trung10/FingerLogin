@@ -17,16 +17,17 @@
         android:name="android.hardware.screen.portrait"
         android:required="false" />
 
-    <!--<application android:name=".App">
+    <!--<application
+        android:theme="@style/AppTheme">
         <activity
             android:name=".SercurityActivity"
             android:label="@string/title_activity_sercurity"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
+            &lt;!&ndash;<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>&ndash;&gt;
         </activity>
     </application>-->
 
