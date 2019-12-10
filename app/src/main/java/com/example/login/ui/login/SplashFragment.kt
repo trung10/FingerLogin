@@ -32,13 +32,13 @@ class SplashFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(SplashViewModel::class.java)
 
-        viewModel.isFirstRunApp.observe(this, Observer { isFirstRun ->
+        viewModel.splashDestination.observe(this, Observer { isFirstRun ->
             if (isFirstRun) {
                 findNavController().navigate(R.id.action_splashFragment_to_lockScreenFragment)
             }
         })
 
-        viewModel.isShowDialogFinger.observe(this, Observer { isShow ->
+        viewModel.splashDestination.observe(this, Observer { isShow ->
             if (isShow) {
                 fragmentManager?.let { FingerDialog().show(it, "") }
             }
