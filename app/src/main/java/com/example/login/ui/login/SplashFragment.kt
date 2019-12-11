@@ -2,16 +2,21 @@ package com.example.login.ui.login
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.example.login.ui.login.SplashDestination.CONFIRM_PASS_CODE
+import com.example.login.ui.login.SplashDestination.SET_UP_PASS_CODE
+
 
 import com.example.login.R
 import com.example.login.dialog.FingerDialog
+import com.example.login.result.Event
+import com.example.login.result.EventObserver
+import com.example.login.util.checkAllMatched
 
 class SplashFragment : Fragment() {
 
@@ -19,7 +24,7 @@ class SplashFragment : Fragment() {
         fun newInstance() = SplashFragment()
     }
 
-    private lateinit var viewModel: SplashViewModel
+    lateinit var viewModel: SplashViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,19 +35,15 @@ class SplashFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(SplashViewModel::class.java)
+        //viewModel = ViewModelProviders.of(this).get(SplashViewModel::class.java)
 
-        viewModel.splashDestination.observe(this, Observer { isFirstRun ->
-            if (isFirstRun) {
-                findNavController().navigate(R.id.action_splashFragment_to_lockScreenFragment)
-            }
+        viewModel.splashDestination.observe(this, EventObserver { destination ->
+            when (destination) {
+                CONFIRM_PASS_CODE -> fragmentManager?.let { FingerDialog().show(it, "") }
+                SET_UP_PASS_CODE -> findNavController().navigate(R.id.action_splashFragment_to_lockScreenFragment)
+            }.checkAllMatched
         })
 
-        viewModel.splashDestination.observe(this, Observer { isShow ->
-            if (isShow) {
-                fragmentManager?.let { FingerDialog().show(it, "") }
-            }
-        })
     }
 
 }

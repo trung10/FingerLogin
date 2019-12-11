@@ -5,6 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.login.domain.prefs.SetUpPassCodeCompletedUseCase
 import com.example.login.result.Event
+import com.example.login.result.Result
+import com.example.login.util.map
+
 
 class SplashViewModel(setUpPassCodeCompletedUseCase: SetUpPassCodeCompletedUseCase) : ViewModel() {
 
@@ -17,9 +20,9 @@ class SplashViewModel(setUpPassCodeCompletedUseCase: SetUpPassCodeCompletedUseCa
         splashDestination = onboardingCompletedResult.map {
             // If this check fails, prefer to launch main activity than show onboarding too often
             if ((it as? Result.Success)?.data == false) {
-                Event(LaunchDestination.ONBOARDING)
+                Event(SplashDestination.SET_UP_PASS_CODE)
             } else {
-                Event(LaunchDestination.MAIN_ACTIVITY)
+                Event(SplashDestination.CONFIRM_PASS_CODE)
             }
         }
     }
