@@ -1,5 +1,6 @@
 package com.example.login.ui.login
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,6 +18,9 @@ class SplashViewModel(setUpPassCodeCompletedUseCase: SetUpPassCodeCompletedUseCa
     init {
         // Check if onboarding has already been completed and then navigate the user accordingly
         setUpPassCodeCompletedUseCase(Unit, onboardingCompletedResult)
+
+        Log.e("AAAAAAAAAAAAAAAAAAAAA", "${onboardingCompletedResult.value}")
+
         splashDestination = onboardingCompletedResult.map {
             // If this check fails, prefer to launch main activity than show onboarding too often
             if ((it as? Result.Success)?.data == false) {
