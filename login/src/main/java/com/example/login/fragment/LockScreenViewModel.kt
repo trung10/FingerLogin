@@ -1,5 +1,6 @@
 package com.example.login.fragment
 
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -23,8 +24,12 @@ class LockScreenViewModel constructor(
     private val _isFingerPrint = MutableLiveData<Boolean>()
     val isFingerPrint: LiveData<Boolean> = _isFingerPrint
 
+    private val _fingerPrinVisiable = MutableLiveData<Int>()
+    val fingerPrinVisiable: LiveData<Int> = _fingerPrinVisiable
+
     init {
         _hashCode.value = ""
         _status.value = R.string.input_your_pass_code
+        _fingerPrinVisiable.value = View.VISIBLE
     }
 }
