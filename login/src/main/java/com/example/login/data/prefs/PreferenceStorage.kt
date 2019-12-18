@@ -15,7 +15,7 @@ import kotlin.reflect.KProperty
  */
 interface PreferenceStorage {
     var setUpPassCodeCompleted: Boolean
-    var scheduleUiHintsShown: Boolean
+    var hashPassCode: String?
     var notificationsPreferenceShown: Boolean
     var preferToReceiveNotifications: Boolean
     var myLocationOptedIn: Boolean
@@ -54,9 +54,8 @@ class SharedPreferenceStorage constructor(context: Context) : PreferenceStorage 
 
     override var setUpPassCodeCompleted by BooleanPreference(prefs, PREF_SETTING_UP, false)
 
-    override var scheduleUiHintsShown: Boolean
-        get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
-        set(value) {}
+    override var hashPassCode by StringPreference(prefs, PREF_SCHED_UI_HINTS_SHOWN,"")
+
     override var notificationsPreferenceShown: Boolean
         get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
         set(value) {}

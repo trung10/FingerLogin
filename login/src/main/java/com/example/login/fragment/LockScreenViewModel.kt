@@ -27,9 +27,16 @@ class LockScreenViewModel constructor(
     private val _fingerPrinVisiable = MutableLiveData<Int>()
     val fingerPrinVisiable: LiveData<Int> = _fingerPrinVisiable
 
+    private val passCode: String = ""
+
     init {
         _hashCode.value = ""
         _status.value = R.string.input_your_pass_code
         _fingerPrinVisiable.value = View.VISIBLE
     }
+}
+
+enum class Mode {
+    MODE_CREATE,
+    MODE_AUTH
 }

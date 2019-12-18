@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.login.R
+import com.example.login.di.InjectionUtil
 import com.example.login.extensions.baseConfig
 import com.example.login.extensions.isFingerPrintSensorAvailable
 import com.example.login.extensions.toast
@@ -35,6 +36,8 @@ class LockScreenFragment : Fragment() {
     private lateinit var mCodeView: CodeView
     private lateinit var titleView: TextView
 
+    lateinit var viewModel: LockScreenViewModel
+
     private var mUseFingerPrint = true
     private var mFingerprintHardwareDetected = false
     private var mIsCreateMode = false
@@ -54,6 +57,11 @@ class LockScreenFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        InjectionUtil.setup(activity!!.applicationContext)
+
+        InjectionUtil.inject(this)
+
         mIsCreateMode = context!!.baseConfig.appPasswordHash.isBlank()
         mUseFingerPrint = Reprint.hasFingerprintRegistered()
         mFingerprintHardwareDetected = context!!.isFingerPrintSensorAvailable()
@@ -306,86 +314,80 @@ class LockScreenFragment : Fragment() {
         return String.format(Locale.getDefault(), "%0${digest.size * 2}x", bigInteger).toLowerCase()
     }
 
-    enum class Mode {
-        MODE_CREATE,
-        MODE_AUTH
-    }
-
-
     /**
      * Set OnPFLockScreenCodeCreateListener.
      *
      * @param listener OnPFLockScreenCodeCreateListener object.
      */
-    fun setCodeCreateListener(listener: OnLockScreenCodeCreateListener) {
+    /*fun setCodeCreateListener(listener: OnLockScreenCodeCreateListener) {
         mCodeCreateListener = listener
-    }
+    }*/
 
     /**
      * Set OnPFLockScreenLoginListener.
      *
      * @param listener OnPFLockScreenLoginListener object.
      */
-    fun setLoginListener(listener: OnLockScreenLoginListener) {
+    /*fun setLoginListener(listener: OnLockScreenLoginListener) {
         mLoginListener = listener
-    }
+    }*/
 
     /**
      * Set Encoded pin code.
      *
      * @param encodedPinCode encoded pin code string, that was created before.
      */
-    fun setEncodedPinCode(encodedPinCode: String) {
+    /*fun setEncodedPinCode(encodedPinCode: String) {
         mEncodedPinCode = encodedPinCode
-    }
+    }*/
 
 
     /**
      * Pin Code create callback interface.
      */
-    interface OnLockScreenCodeCreateListener {
+    /*interface OnLockScreenCodeCreateListener {
 
-        /**
+        *//**
          * Callback method for pin code creation.
          *
          * @param encodedCode encoded pin code string.
-         */
+         *//*
         fun onCodeCreated(encodedCode: String)
 
-        /**
+        *//**
          * This will be called if PFFLockScreenConfiguration#newCodeValidation is true.
          * User need to input new code twice. This method will be called when second code isn't
          * the same as first.
-         */
+         *//*
         fun onNewCodeValidationFailed()
 
-    }
+    }*/
 
 
     /**
      * Login callback interface.
      */
-    interface OnLockScreenLoginListener {
+    /*interface OnLockScreenLoginListener {
 
-        /**
-         * Callback method for successful login attempt with pin code.
-         */
+        *//**
+     * Callback method for successful login attempt with pin code.
+     *//*
         fun onCodeInputSuccessful()
 
-        /**
-         * Callback method for successful login attempt with fingerprint.
-         */
+        *//**
+     * Callback method for successful login attempt with fingerprint.
+     *//*
         fun onFingerprintSuccessful()
 
-        /**
-         * Callback method for unsuccessful login attempt with pin code.
-         */
+        *//**
+     * Callback method for unsuccessful login attempt with pin code.
+     *//*
         fun onPinLoginFailed()
 
-        /**
-         * Callback method for unsuccessful login attempt with fingerprint.
-         */
+        *//**
+     * Callback method for unsuccessful login attempt with fingerprint.
+     *//*
         fun onFingerprintLoginFailed()
 
-    }
+    }*/
 }

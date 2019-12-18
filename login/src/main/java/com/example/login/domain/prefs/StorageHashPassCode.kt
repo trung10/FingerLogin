@@ -5,9 +5,8 @@ import com.example.login.domain.UseCase
 
 class StorageHashPassCode constructor(
     private val preferenceStorage: PreferenceStorage
-): UseCase<Unit, Unit>() {
-    override fun execute(parameters: Unit) {
-
+) : UseCase<String, Unit>() {
+    override fun execute(parameters: String) {
+        preferenceStorage.hashPassCode = parameters
     }
-
 }

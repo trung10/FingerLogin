@@ -9,8 +9,6 @@ import com.example.login.domain.prefs.SetUpPassCodeCompletedUseCase
 import com.example.login.domain.prefs.StorageHashPassCode
 import com.example.login.fragment.LockScreenFragment
 import com.example.login.fragment.LockScreenViewModel
-import com.example.login.ui.login.SplashFragment
-import com.example.login.ui.login.SplashViewModel
 
 @SuppressLint("StaticFieldLeak")
 object InjectionUtil {
@@ -24,21 +22,12 @@ object InjectionUtil {
         this.context = context
     }
 
-    private val setUpPassCodeCompletedUseCase: SetUpPassCodeCompletedUseCase by lazy {
-        SetUpPassCodeCompletedUseCase(preferenceStorage = preferenceStorage)
-    }
-
     private val storageHashPassCode: StorageHashPassCode by lazy {
         StorageHashPassCode(preferenceStorage = preferenceStorage)
     }
 
     private val checkPassCode: CheckPassCode by lazy {
         CheckPassCode(preferenceStorage = preferenceStorage)
-    }
-
-    fun inject(fragment: SplashFragment) {
-        fragment.viewModel =
-            SplashViewModel(setUpPassCodeCompletedUseCase = setUpPassCodeCompletedUseCase)
     }
 
     fun inject(fragment: LockScreenFragment) {
