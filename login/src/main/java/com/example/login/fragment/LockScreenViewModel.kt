@@ -1,5 +1,6 @@
 package com.example.login.fragment
 
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -33,6 +34,10 @@ class LockScreenViewModel constructor(
         _hashCode.value = ""
         _status.value = R.string.input_your_pass_code
         _fingerPrinVisiable.value = View.VISIBLE
+    }
+
+    fun onKeyClick(number: Int) {
+        Log.e("AAAAAAAAAAA", "$number" )
     }
 }
 

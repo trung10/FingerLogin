@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.login.R
+import com.example.login.databinding.FragmentLockScreenBinding
 import com.example.login.di.InjectionUtil
 import com.example.login.extensions.baseConfig
 import com.example.login.extensions.isFingerPrintSensorAvailable
@@ -38,18 +39,20 @@ class LockScreenFragment : Fragment() {
 
     lateinit var viewModel: LockScreenViewModel
 
+    private lateinit var binding: FragmentLockScreenBinding
+
     private var mUseFingerPrint = true
     private var mFingerprintHardwareDetected = false
     private var mIsCreateMode = false
 
-    private var mCodeCreateListener: OnLockScreenCodeCreateListener? = null
-    private var mLoginListener: OnLockScreenLoginListener? = null
+    //private var mCodeCreateListener: OnLockScreenCodeCreateListener? = null
+    //private var mLoginListener: OnLockScreenLoginListener? = null
+
     private var mCode = ""
     private var mCodeValidation = ""
     private var mEncodedPinCode = ""
 
     //private PFFLockScreenConfiguration mConfiguration;
-    private lateinit var mRootView: View
 
     //private val mPinCodeViewModel: PinCodeViewModel =  PFPinCodeViewModel()
 
@@ -71,23 +74,26 @@ class LockScreenFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_lock_screen, container, false)
 
-        mFingerprintButton = view.findViewById(R.id.button_finger_print)
-        mDeleteButton = view.findViewById(R.id.button_delete)
+        binding = FragmentLockScreenBinding.inflate(inflater, container, false).apply {
+            lifecycleOwner = viewLifecycleOwner
+            viewModel = this@LockScreenFragment.viewModel
+        }
+
+        mFingerprintButton = binding.buttonFingerPrint
+        mDeleteButton = binding.buttonDelete
 
         //mLeftButton = view.findViewById(R.id.button_left)
-        mNotSetPassButton = view.findViewById(R.id.button_not_set_pass)
+        mNotSetPassButton = binding.buttonNotSetPass
 
         mDeleteButton.setOnClickListener(mOnDeleteButtonClickListener)
         mDeleteButton.setOnLongClickListener(mOnDeleteButtonOnLongClickListener)
         mFingerprintButton.setOnClickListener(mOnFingerprintClickListener)
 
-        titleView = view.findViewById(R.id.title_text_view)
+        titleView = binding.titleTextView
 
-        mCodeView = view.findViewById(R.id.code_view)
-        initKeyViews(view)
+        mCodeView = binding.codeView
+        initKeyViews()
 
         mCodeView.setListener(mCodeListener)
 
@@ -97,24 +103,23 @@ class LockScreenFragment : Fragment() {
 
         if (mFingerprintHardwareDetected) checkRegisteredFingerprints()
 
-        mRootView = view
-
         applyConfiguration()
 
-        return view
+        return binding.root
     }
 
-    private fun initKeyViews(parent: View) {
-        parent.findViewById<TextView>(R.id.button_0).setOnClickListener(mOnKeyClickListener)
-        parent.findViewById<TextView>(R.id.button_1).setOnClickListener(mOnKeyClickListener)
-        parent.findViewById<TextView>(R.id.button_2).setOnClickListener(mOnKeyClickListener)
-        parent.findViewById<TextView>(R.id.button_3).setOnClickListener(mOnKeyClickListener)
-        parent.findViewById<TextView>(R.id.button_4).setOnClickListener(mOnKeyClickListener)
-        parent.findViewById<TextView>(R.id.button_5).setOnClickListener(mOnKeyClickListener)
-        parent.findViewById<TextView>(R.id.button_6).setOnClickListener(mOnKeyClickListener)
-        parent.findViewById<TextView>(R.id.button_7).setOnClickListener(mOnKeyClickListener)
-        parent.findViewById<TextView>(R.id.button_8).setOnClickListener(mOnKeyClickListener)
-        parent.findViewById<TextView>(R.id.button_9).setOnClickListener(mOnKeyClickListener)
+    private fun initKeyViews() {
+        return
+        binding.button0.setOnClickListener(mOnKeyClickListener)
+        binding.button1.setOnClickListener(mOnKeyClickListener)
+        binding.button2.setOnClickListener(mOnKeyClickListener)
+        binding.button3.setOnClickListener(mOnKeyClickListener)
+        binding.button4.setOnClickListener(mOnKeyClickListener)
+        binding.button5.setOnClickListener(mOnKeyClickListener)
+        binding.button6.setOnClickListener(mOnKeyClickListener)
+        binding.button7.setOnClickListener(mOnKeyClickListener)
+        binding.button8.setOnClickListener(mOnKeyClickListener)
+        binding.button9.setOnClickListener(mOnKeyClickListener)
     }
 
     private fun applyConfiguration() {
@@ -216,13 +221,13 @@ class LockScreenFragment : Fragment() {
                         mCode = code
                         val encrypt = getHashedPin()
                         context!!.baseConfig.appPasswordHash = encrypt
-                        mCodeCreateListener?.onCodeCreated(encrypt)
+                        //mCodeCreateListener?.onCodeCreated(encrypt)
                         mIsCreateMode = false
                         titleView.text = getString(R.string.input_your_pass_code)
                         cleanCode()
                         return
                     } else {
-                        mCodeCreateListener?.onNewCodeValidationFailed()
+                        //mCodeCreateListener?.onNewCodeValidationFailed()
                         errorAction()
                     }
                 }
@@ -231,10 +236,10 @@ class LockScreenFragment : Fragment() {
                 mCode = code
 
                 if (getHashedPin() == context!!.baseConfig.appPasswordHash) {
-                    mLoginListener?.onCodeInputSuccessful()
+                    //mLoginListener?.onCodeInputSuccessful()
                     context?.toast("Login success")
                 } else {
-                    mLoginListener?.onPinLoginFailed()
+                    //mLoginListener?.onPinLoginFailed()
                     errorAction()
                 }
             }
@@ -257,7 +262,7 @@ class LockScreenFragment : Fragment() {
 
         Reprint.authenticate(object : AuthenticationListener {
             override fun onSuccess(moduleTag: Int) {
-                mLoginListener?.onFingerprintSuccessful()
+                //mLoginListener?.onFingerprintSuccessful()
                 context?.toast("Login fingerprint successful")
             }
 
@@ -268,7 +273,7 @@ class LockScreenFragment : Fragment() {
                 moduleTag: Int,
                 errorCode: Int
             ) {
-                mLoginListener?.onFingerprintLoginFailed()
+                //mLoginListener?.onFingerprintLoginFailed()
                 when (failureReason) {
                     AuthenticationFailureReason.AUTHENTICATION_FAILED -> context?.toast("Login fingerprint failed")
                     AuthenticationFailureReason.LOCKED_OUT -> context?.toast("Login fingerprint failed")
@@ -347,18 +352,20 @@ class LockScreenFragment : Fragment() {
      */
     /*interface OnLockScreenCodeCreateListener {
 
-        *//**
-         * Callback method for pin code creation.
-         *
-         * @param encodedCode encoded pin code string.
-         *//*
+        */
+    /**
+     * Callback method for pin code creation.
+     *
+     * @param encodedCode encoded pin code string.
+     *//*
         fun onCodeCreated(encodedCode: String)
 
-        *//**
-         * This will be called if PFFLockScreenConfiguration#newCodeValidation is true.
-         * User need to input new code twice. This method will be called when second code isn't
-         * the same as first.
-         *//*
+        */
+    /**
+     * This will be called if PFFLockScreenConfiguration#newCodeValidation is true.
+     * User need to input new code twice. This method will be called when second code isn't
+     * the same as first.
+     *//*
         fun onNewCodeValidationFailed()
 
     }*/
@@ -369,22 +376,26 @@ class LockScreenFragment : Fragment() {
      */
     /*interface OnLockScreenLoginListener {
 
-        *//**
+        */
+    /**
      * Callback method for successful login attempt with pin code.
      *//*
         fun onCodeInputSuccessful()
 
-        *//**
+        */
+    /**
      * Callback method for successful login attempt with fingerprint.
      *//*
         fun onFingerprintSuccessful()
 
-        *//**
+        */
+    /**
      * Callback method for unsuccessful login attempt with pin code.
      *//*
         fun onPinLoginFailed()
 
-        *//**
+        */
+    /**
      * Callback method for unsuccessful login attempt with fingerprint.
      *//*
         fun onFingerprintLoginFailed()

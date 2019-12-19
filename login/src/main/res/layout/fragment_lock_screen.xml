@@ -3,15 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <data>
-        <!--<variable
+
+        <variable
             name="viewModel"
-            type="" />-->
+            type="com.example.login.fragment.LockScreenViewModel" />
+
+        <variable
+            name="mode"
+            type="com.example.login.fragment.Mode" />
     </data>
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <RelativeLayout
         android:id="@+id/fragment_pf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -31,6 +34,7 @@
             android:orientation="vertical"
             android:paddingBottom="60dp">
 
+            <!-- Mapping status -->
             <TextView
                 android:id="@+id/title_text_view"
                 style="?title"
@@ -38,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
-                android:text="@string/lock_screen_title"
+                android:text="@string/confirm_pass_code"
                 android:theme="@style/LockScreenTitleTextStyle" />
 
             <com.example.login.views.CodeView
@@ -72,6 +76,7 @@
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:text="1"
+                        android:onClick="@{() -> viewModel.onKeyClick(1)}"
                         android:theme="@style/LockScreenButtonStyle" />
                 </FrameLayout>
 
@@ -314,7 +319,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/not_set_pass"
                 android:theme="@style/LockScreenNextTextStyle"
-                android:visibility="visible" />
+                android:visibility="visible"/>
 
         </LinearLayout>
     </RelativeLayout>
