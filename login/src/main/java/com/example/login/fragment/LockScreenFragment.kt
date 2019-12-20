@@ -77,7 +77,6 @@ class LockScreenFragment : Fragment() {
 
         binding = FragmentLockScreenBinding.inflate(inflater, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
-            viewModel = this@LockScreenFragment.viewModel
         }
 
         mFingerprintButton = binding.buttonFingerPrint
@@ -106,6 +105,11 @@ class LockScreenFragment : Fragment() {
         applyConfiguration()
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        //binding.viewModel = viewModel
     }
 
     private fun initKeyViews() {

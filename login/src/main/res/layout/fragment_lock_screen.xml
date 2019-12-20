@@ -9,16 +9,12 @@
             name="viewModel"
             type="com.example.login.fragment.LockScreenViewModel" />
 
-        <variable
-            name="mode"
-            type="com.example.login.fragment.Mode" />
     </data>
 
     <RelativeLayout
         android:id="@+id/fragment_pf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-
 
         <ImageView
             style="?lock_screen"
@@ -75,8 +71,8 @@
                         android:layout_height="70dp"
                         android:layout_gravity="center"
                         android:gravity="center"
+                        android:onClick="@{() -> viewModel.onKeyClick1()}"
                         android:text="1"
-                        android:onClick="@{() -> viewModel.onKeyClick(1)}"
                         android:theme="@style/LockScreenButtonStyle" />
                 </FrameLayout>
 
@@ -94,6 +90,7 @@
                         android:layout_height="@dimen/button_lock_screen_size"
                         android:layout_gravity="center"
                         android:gravity="center"
+                        android:onClick="@{() -> viewModel.onKeyClick2()}"
                         android:text="2"
                         android:theme="@style/LockScreenButtonStyle" />
                 </FrameLayout>
@@ -112,6 +109,7 @@
                         android:layout_height="@dimen/button_lock_screen_size"
                         android:layout_gravity="center"
                         android:gravity="center"
+                        android:onClick="@{() -> viewModel.onKeyClick3()}"
                         android:text="3"
                         android:theme="@style/LockScreenButtonStyle" />
                 </FrameLayout>
@@ -130,6 +128,7 @@
                         android:layout_height="@dimen/button_lock_screen_size"
                         android:layout_gravity="center"
                         android:gravity="center"
+                        android:onClick="@{() -> viewModel.onKeyClick4()}"
                         android:text="4"
                         android:theme="@style/LockScreenButtonStyle" />
                 </FrameLayout>
@@ -148,6 +147,7 @@
                         android:layout_height="@dimen/button_lock_screen_size"
                         android:layout_gravity="center"
                         android:gravity="center"
+                        android:onClick="@{() -> viewModel.onKeyClick5()}"
                         android:text="5"
                         android:theme="@style/LockScreenButtonStyle" />
                 </FrameLayout>
@@ -166,6 +166,7 @@
                         android:layout_height="@dimen/button_lock_screen_size"
                         android:layout_gravity="center"
                         android:gravity="center"
+                        android:onClick="@{() -> viewModel.onKeyClick6()}"
                         android:text="6"
                         android:theme="@style/LockScreenButtonStyle" />
                 </FrameLayout>
@@ -184,6 +185,7 @@
                         android:layout_height="@dimen/button_lock_screen_size"
                         android:layout_gravity="center"
                         android:gravity="center"
+                        android:onClick="@{() -> viewModel.onKeyClick7()}"
                         android:text="7"
                         android:theme="@style/LockScreenButtonStyle" />
                 </FrameLayout>
@@ -202,6 +204,7 @@
                         android:layout_height="@dimen/button_lock_screen_size"
                         android:layout_gravity="center"
                         android:gravity="center"
+                        android:onClick="@{() -> viewModel.onKeyClick8()}"
                         android:text="8"
                         android:theme="@style/LockScreenButtonStyle" />
                 </FrameLayout>
@@ -220,6 +223,7 @@
                         android:layout_height="@dimen/button_lock_screen_size"
                         android:layout_gravity="center"
                         android:gravity="center"
+                        android:onClick="@{() -> viewModel.onKeyClick9()}"
                         android:text="9"
                         android:theme="@style/LockScreenButtonStyle" />
                 </FrameLayout>
@@ -259,6 +263,7 @@
                         android:layout_height="@dimen/button_lock_screen_size"
                         android:layout_gravity="center"
                         android:gravity="center"
+                        android:onClick="@{() -> viewModel.onKeyClick0()}"
                         android:text="0"
                         android:theme="@style/LockScreenButtonStyle" />
                 </FrameLayout>
@@ -319,7 +324,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/not_set_pass"
                 android:theme="@style/LockScreenNextTextStyle"
-                android:visibility="visible"/>
+                android:visibility="visible" />
 
         </LinearLayout>
     </RelativeLayout>

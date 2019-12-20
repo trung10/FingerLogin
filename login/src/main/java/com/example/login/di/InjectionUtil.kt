@@ -2,6 +2,8 @@ package com.example.login.di
 
 import android.annotation.SuppressLint
 import android.content.Context
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.login.data.prefs.PreferenceStorage
 import com.example.login.data.prefs.SharedPreferenceStorage
 import com.example.login.domain.prefs.CheckPassCode
@@ -35,5 +37,11 @@ object InjectionUtil {
             storageHashPassCode = storageHashPassCode,
             checkPassCode = checkPassCode
         )
+    }
+
+    class myViewModelFactory: ViewModelProvider.Factory{
+        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            return modelClass.newInstance()
+        }
     }
 }
